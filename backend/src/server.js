@@ -8,7 +8,7 @@ const db = require('./utils/db');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8000';
+const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8080';
 
 app.use(cors());
 app.use(express.json());
@@ -98,7 +98,7 @@ app.post('/api/profiles/:id/consent', async (req, res) => {
     let evaluationResult = null;
     
     try {
-      const response = await axios.post(`${AI_SERVICE_URL}/api/predict`, updatedProfile);
+      const response = await axios.post(`${AI_SERVICE_URL}/api/predict`, updatedProfile, { proxy: false });
       evaluationResult = response.data;
       
       // Store evaluation in database
@@ -220,7 +220,7 @@ app.get('/api/profiles/:id/forecast', async (req, res) => {
     
     const response = await axios.post(`${AI_SERVICE_URL}/api/forecast`, {
       sales_history: salesHistory
-    });
+    }, { proxy: false });
     
     res.json(response.data);
   } catch (err) {
@@ -237,7 +237,7 @@ app.post('/api/profiles/:id/whatif', async (req, res) => {
     const response = await axios.post(`${AI_SERVICE_URL}/api/whatif`, {
       profile: profile,
       modifications: req.body.modifications
-    });
+    }, { proxy: false });
     
     res.json(response.data);
   } catch (err) {
@@ -325,7 +325,7 @@ app.post('/api/profiles/:id/simulate-update', async (req, res) => {
     let evaluationResult = null;
     if (profile.consentGranted) {
       try {
-        const response = await axios.post(`${AI_SERVICE_URL}/api/predict`, updatedProfile);
+        const response = await axios.post(`${AI_SERVICE_URL}/api/predict`, updatedProfile, { proxy: false });
         evaluationResult = response.data;
         
         const existingEval = db.findOne('evaluations', { msmeId: profile.id });

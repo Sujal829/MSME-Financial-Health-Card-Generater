@@ -3,37 +3,42 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white;
+    @apply bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-600 selection:text-white;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(59, 130, 246, 0.05) 0, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(209, 250, 229, 0.45) 0, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.06) 0, transparent 50%);
     background-attachment: fixed;
   }
 }
 
 /* Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
 }
 
 .glass-panel-hover {
-  @apply transition-all duration-300 hover:border-slate-700/80 hover:bg-slate-900/60;
-}
-
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
-}
-
-.glow-purple {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  @apply transition-all duration-300 hover:border-emerald-300 hover:bg-slate-50/80;
 }
 
 .glow-green {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.12);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.08);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
 }
 
 /* Custom Scrollbar */
@@ -43,16 +48,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(241, 245, 249, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
+  background: rgba(148, 163, 184, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.4);
+  background: rgba(148, 163, 184, 0.5);
 }
 
 /* Shimmer animation for loading states */
@@ -66,7 +71,7 @@
 }
 
 .shimmer {
-  background: linear-gradient(90deg, rgba(30, 41, 59, 0.4) 25%, rgba(51, 65, 85, 0.4) 50%, rgba(30, 41, 59, 0.4) 75%);
+  background: linear-gradient(90deg, rgba(209, 250, 229, 0.4) 25%, rgba(226, 232, 240, 0.6) 50%, rgba(209, 250, 229, 0.4) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
